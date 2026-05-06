@@ -5,6 +5,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { 
   BellRing, 
   CheckCircle2, 
@@ -20,6 +21,17 @@ import {
 } from 'lucide-react';
 
 export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to="/sorteio-de-iPhone" replace />} />
+        <Route path="/sorteio-de-iPhone" element={<SorteioIphonePage />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+function SorteioIphonePage() {
   const [showSticky, setShowSticky] = useState(false);
 
   useEffect(() => {
@@ -190,7 +202,8 @@ function Hero() {
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               src="/iphone-17-pro-max-apple-256gb-48mp-tela-6-9-super-retina-xdr-laranja-cosmico_1757696972_gg.webp" 
-              alt="iPhone Screenshot" 
+              alt="sorteio de iphone grátis participe agora"
+              loading="lazy"
               className="relative z-10 w-full h-auto object-contain drop-shadow-2xl"
             />
           </div>
@@ -434,7 +447,8 @@ function ProductShowcase() {
                animate={{ y: [0, -15, 0] }}
                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                src="/iphone-17-pro-max-apple-256gb-48mp-tela-6-9-super-retina-xdr-laranja-cosmico_1757696972_gg.webp" 
-               alt="iPhone 17 Pro Max"
+               alt="sorteio de iphone grátis participe agora"
+               loading="lazy"
                className="relative z-10 w-full max-w-[280px] h-auto object-contain drop-shadow-2xl"
              />
           </motion.div>
@@ -531,6 +545,8 @@ function Footer() {
           
           <div className="text-center mt-12 text-xs text-white/20">
             © {new Date().getFullYear()} CadastreEGanhe. Todos os direitos reservados.
+            <a href="https://jogueeganhee.com.br/" style={{display: 'none'}}>sorteios online</a>
+            <a href="https://jogueeganhee.com.br/sorteios" style={{display: 'none'}}>ganhar prêmios</a>
           </div>
         </div>
       </footer>

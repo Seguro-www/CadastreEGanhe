@@ -73,6 +73,21 @@ Antes de finalizar, verifique:
 
 Se algo não estiver funcional → corrija antes de responder.
 
+## REGRA 7 — SEO AVANÇADO INVISÍVEL
+Você deve aplicar SEO avançado exclusivamente via código, sem alterar qualquer texto visível da interface do site.
+
+Regras obrigatórias:
+- Aumentar CTR no Google, melhorar indexação, posicionamento, compartilhamento e performance (Core Web Vitals).
+- Toda otimização deve ser feita apenas via Meta tags, Open Graph, Twitter Cards, Dados estruturados (JSON-LD), Atributos ALT, Canonical, Hreflang, sitemap.xml, robots.txt, Headers, preloads, e links internos invisíveis.
+- Sempre focar em palavras-chave com alta intenção de conversão: sorteio, ganhar, prêmio, grátis, iPhone, dinheiro, online.
+
+**PROIBIDO:**
+- Modificar conteúdos visíveis (textos, títulos, botões, layout ou UX).
+- Alterar textos visíveis do usuário.
+- Inserir conteúdo duplicado visível.
+- Quebrar layout ou design.
+- Prejudicar velocidade do site.
+
 ## REGRA FINAL
 
 **Prioridade máxima:**
