@@ -3,28 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FCPB4CV8MX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-FCPB4CV8MX');
+    </script>
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sorteio de iPhone Grátis 🎁" />
+    <meta property="og:description" content="Quer ganhar um iPhone grátis? Participe agora do sorteio no Jogue e Ganhe!" />
+    <meta property="og:image" content="https://jogueeganhee.com.br/criativo-iphone.png" />
+    <meta property="og:url" content="https://jogueeganhee.com.br" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Sorteio de iPhone Grátis 🎁" />
+    <meta property="twitter:description" content="Quer ganhar um iPhone grátis? Participe agora do sorteio no Jogue e Ganhe!" />
+    <meta property="twitter:image" content="https://jogueeganhee.com.br/criativo-iphone.png" />
+    <meta property="twitter:url" content="https://jogueeganhee.com.br" />
+    
     <title>Sorteio de iPhone Grátis | Participe e Ganhe Hoje</title>
     
     <meta name="description" content="Participe do sorteio de iPhone grátis no Jogue e Ganhe. Cadastre-se agora e concorra a um iPhone novo de forma rápida, fácil e segura.">
     <meta name="keywords" content="sorteio de iphone, ganhar iphone gratis, sorteio iphone brasil, sorteio online iphone, ganhar celular gratis">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://jogueeganhee.com.br/sorteio-de-iPhone">
-
-    <meta property="og:title" content="Sorteio de iPhone Grátis 🎁">
-    <meta property="og:description" content="Quer ganhar um iPhone grátis? Participe agora do sorteio no Jogue e Ganhe!">
-    <meta property="og:image" content="https://jogueeganhee.com.br/imagens/sorteio-iphone.jpg">
-    <meta property="og:url" content="https://jogueeganhee.com.br/sorteio-de-iPhone">
-    <meta property="og:type" content="website">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Ganhe um iPhone Grátis Hoje">
-    <meta name="twitter:description" content="Participe do sorteio e concorra a um iPhone novo.">
-    <meta name="twitter:image" content="https://jogueeganhee.com.br/imagens/sorteio-iphone.jpg">
-
     <meta name="googlebot" content="index, follow, max-image-preview:large">
-    <meta name="theme-color" content="#00c853">
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#f97316">
+    <link rel="icon" type="image/png" href="/icone-app.png" />
+    <link rel="apple-touch-icon" href="/icone-app.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.css" type="text/css" />
+    <script src="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js"></script>
 
     <script type="application/ld+json">
     {
@@ -61,10 +78,45 @@
       }
     }
     </script>
+    <script type="application/javascript">
+      pn_idzone = 5921888;
+      pn_sleep_seconds = 0;
+      pn_is_self_hosted = 1;
+      pn_soft_ask = 0;
+      pn_filename = "/worker.js"; 
+    </script>
+    <script type="application/javascript" src="https://js.wpnsrv.com/pn.php"></script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Exoclick Video Slider -->
+    <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
+    <ins class="eas6a97888e31" data-zoneid="5920254"></ins> 
+    <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+
+    <script>
+      window.deferredPrompt = null;
+      window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent the mini-infobar from appearing on mobile
+        e.preventDefault();
+        // Stash the event so it can be triggered later.
+        window.deferredPrompt = e;
+        // Optionally, send an event to let the app know it can show the install button
+        window.dispatchEvent(new Event('app-install-ready'));
+      });
+      
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then((registration) => {
+            console.log('ServiceWorker registration successful');
+          }).catch((err) => {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+        });
+      }
+    </script>
   </body>
 </html>
 

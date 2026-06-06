@@ -1,0 +1,102 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 0. Global Safety Net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // --- Helpers ---
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // --- Validation Blueprints ---
+    function isValidAdmin(data) {
+      return data.keys().hasAll(['email', 'createdAt'])
+        && data.keys().size() == 2
+        && data.email is string && data.email.size() <= 256
+        && data.createdAt is timestamp;
+    }
+
+    function isValidCampaign(data) {
+      return data.keys().hasAll(['id', 'name', 'imageUrl', 'status', 'createdAt', 'updatedAt'])
+        && data.keys().size() == 6
+        && data.id is string && data.id.size() <= 128
+        && data.name is string && data.name.size() <= 256
+        && data.imageUrl is string && data.imageUrl.size() <= 1024
+        && data.status in ['active', 'ended']
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidRegistration(data) {
+      return data.keys().hasAll(['email', 'sweepstakesId', 'tickets', 'dailyTickets', 'lastDailyUpdate', 'userId', 'createdAt', 'updatedAt'])
+        && data.keys().size() == 8
+        && data.email is string && data.email.size() <= 256
+        && data.sweepstakesId is string && data.sweepstakesId.size() <= 128
+        && data.tickets is number && data.tickets >= 1
+        && data.dailyTickets is number && data.dailyTickets >= 0
+        && data.lastDailyUpdate is timestamp
+        && data.userId == request.auth.uid
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    // --- Collections ---
+    match /admins/{userId} {
+      allow get: if isOwner(userId) || isAdmin();
+      allow list: if isAdmin();
+      allow create: if isOwner(userId) && request.auth.token.email == 'bdf.josie@gmail.com' && isValidAdmin(incoming());
+      allow update, delete: if false; // Only manageable from backend or initialization script
+    }
+
+    match /campaigns/{campaignId} {
+      allow get: if true;
+      allow list: if true;
+      
+      allow create: if isAdmin()
+        && isValidCampaign(incoming())
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time;
+        
+      allow update: if isAdmin()
+        && isValidCampaign(incoming())
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time;
+        
+      allow delete: if isAdmin();
+    }
+
+    match /registrations/{registrationId} {
+      allow get: if resource == null || isOwner(resource.data.userId) || isAdmin();
+      allow list: if isSignedIn() && resource.data.userId == request.auth.uid || isAdmin();
+      
+      allow create: if isSignedIn() && incoming().userId == request.auth.uid;
+        
+      allow update: if isOwner(existing().userId) && incoming().userId == existing().userId;
+
+      allow delete: if isAdmin(); 
+    }
+  }
+}

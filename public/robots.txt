@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /adm
+Disallow: /dashboard
+
+Sitemap: https://jogueeganhee.com.br/sitemap.xml

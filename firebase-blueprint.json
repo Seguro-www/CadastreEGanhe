@@ -1,0 +1,85 @@
+{
+  "entities": {
+    "Admin": {
+      "title": "Admin",
+      "description": "Admin users.",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["email", "createdAt"]
+    },
+    "Campaign": {
+      "title": "Campaign",
+      "description": "A sweepstakes campaign.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "status": { "type": "string", "enum": ["active", "ended"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "name", "imageUrl", "status", "createdAt", "updatedAt"]
+    },
+    "Registration": {
+      "title": "Registration",
+      "description": "A sweepstakes participation record.",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "User email address."
+        },
+        "sweepstakesId": {
+          "type": "string",
+          "description": "The unique identifier for the sweepstakes campaign."
+        },
+        "tickets": {
+          "type": "number",
+          "description": "Total number of lucky tickets assigned to this registration."
+        },
+        "dailyTickets": {
+          "type": "number",
+          "description": "Number of tickets earned today. Resets daily (max 100)."
+        },
+        "lastDailyUpdate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of the last daily ticket increase."
+        },
+        "userId": {
+          "type": "string",
+          "description": "The UID of the authenticated user."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of creation."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of last update."
+        }
+      },
+      "required": ["email", "sweepstakesId", "tickets", "userId", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/admins/{userId}": {
+      "schema": "Admin",
+      "description": "Collection of admin user profiles."
+    },
+    "/campaigns/{campaignId}": {
+      "schema": "Campaign",
+      "description": "Collection of all sweepstakes campaigns."
+    },
+    "/registrations/{registrationId}": {
+      "schema": "Registration",
+      "description": "Collection of all sweepstakes participations."
+    }
+  }
+}
