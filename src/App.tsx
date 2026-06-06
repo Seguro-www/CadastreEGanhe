@@ -5,7 +5,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { BrowserRouter, Routes, Route, Navigate, Link, useLocation } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate, Link, useLocation } from 'react-router-dom';
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 import { HomePage } from './pages/HomePage';
 import { AdminPage } from './pages/AdminPage';
@@ -97,7 +97,7 @@ function ScrollToTop() {
 export default function App() {
   return (
     <HelmetProvider>
-      <BrowserRouter>
+      <HashRouter>
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -111,7 +111,7 @@ export default function App() {
           <Route path="/adm" element={<AdminPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </HelmetProvider>
   );
 }
