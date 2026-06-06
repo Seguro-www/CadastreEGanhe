@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 import { SorteioStatusCard } from '../components/SorteioStatusCard';
 import { useFirebase } from '../hooks/useFirebase';
 import { signInWithGoogle, auth } from '../lib/firebase';
-import { Navbar } from '../App';
+import { Navbar } from '../components/NavigationLayout';
 
 export function HomePage() {
   const navigate = useNavigate();

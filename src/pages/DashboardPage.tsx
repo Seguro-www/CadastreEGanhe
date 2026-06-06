@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Navbar } from '../App';
+import { Navbar } from '../components/NavigationLayout';
 
 export function DashboardPage() {
   const { user, registrations, loading, campaigns } = useFirebase();

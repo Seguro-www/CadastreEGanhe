@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Helmet } from 'react-helmet-async';
-import { Navbar, Footer, TrustIndicators } from '../App';
+import { Navbar, Footer, TrustIndicators } from '../components/NavigationLayout';
 import { 
   ChevronRight, 
   ShieldCheck, 

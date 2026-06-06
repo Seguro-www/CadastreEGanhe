@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { Home, Share2, BellRing, ChevronRight, CheckCircle2, ShieldCheck, Zap, Lock, Info, Trophy, Target, ArrowRight } from 'lucide-react';
 import { SorteioStatusCard } from '../components/SorteioStatusCard';
-import { TrustIndicators, HowItWorks, Navbar } from '../App';
+import { TrustIndicators, HowItWorks, Navbar } from '../components/NavigationLayout';
 import { WinnerInfoSection } from '../components/WinnerInfoSection';
 import { signInWithGoogle } from '../lib/firebase';
 
